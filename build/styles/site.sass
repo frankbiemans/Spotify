@@ -1,0 +1,647 @@
+$wutangyellow: rgb(226, 164, 43);
+$darkish: #0f0f0f
+$blue: #0095df
+
+li.album
+	position: relative
+
+	.album-title
+		transition: max-width .15s ease-in-out
+		display: block
+		position: absolute
+		right: 0
+		top: 0
+		bottom: 0
+		width: auto
+		max-width: .75rem
+		background-color: $blue
+		overflow: hidden
+		text-shadow: 1px 1px 1px black
+
+		&:hover
+			max-width: 200px
+
+		.album-title__inner
+			display: block
+			padding: 0 1rem
+			font-weight: 900
+			font-size: .75rem
+			line-height: 2.5
+			text-transform: uppercase
+
+$colors: Lightcoral, Salmon, Darksalmon, Lightsalmon, Crimson, Red, Firebrick, Darkred, Pink, Lightpink, Hotpink, Deeppink, Mediumvioletred, Palevioletred, Lightsalmon, Coral, Tomato, Orangered, Darkorange, Orange, Gold, Yellow, Lightyellow, Lemonchiffon, Lightgoldenrodyellow, Papayawhip, Moccasin, Peachpuff, Palegoldenrod, Khaki, Darkkhaki, Lavender, Thistle, Plum, Violet, Orchid, Fuchsia, Magenta, Mediumorchid, Mediumpurple, Rebeccapurple, Blueviolet, Darkviolet, Darkorchid, Darkmagenta, Purple, Indigo, Slateblue, Darkslateblue, Mediumslateblue, Greenyellow, Chartreuse, Lawngreen, Lime, Limegreen, Palegreen, Lightgreen, Mediumspringgreen, Springgreen, Mediumseagreen, Seagreen, Forestgreen, Green, Darkgreen, Yellowgreen, Olivedrab, Olive, Darkolivegreen, Mediumaquamarine, Darkseagreen, Lightseagreen, Darkcyan, Teal, Aqua, Cyan, Lightcyan, Paleturquoise, Aquamarine, Turquoise, Mediumturquoise, Darkturquoise, Cadetblue, Steelblue, Lightsteelblue, Powderblue, Lightblue, Skyblue, Lightskyblue, Deepskyblue, Dodgerblue, Cornflowerblue, Mediumslateblue, Royalblue, Blue, Mediumblue, Darkblue, Navy, Midnightblue, Cornsilk, Blanchedalmond, Bisque, Navajowhite, Wheat, Burlywood, Tan, Rosybrown, Sandybrown, Goldenrod, Darkgoldenrod, Peru, Chocolate, Saddlebrown, Sienna, Brown, Maroon, White, Snow, Honeydew, Mintcream, Azure, Aliceblue, Ghostwhite, Whitesmoke, Seashell, Beige, Oldlace, Floralwhite, Ivory, Antiquewhite, Linen, Lavenderblush, Mistyrose, Gainsboro, Lightgray, Silver, Darkgray, Gray, Dimgray, Lightslategray, Slategray, Darkslategray;
+
+@for $i from 0 through 99
+	li.album-#{$i}
+		.album-title
+			background-color: nth($colors, random(length($colors)))
+
+body
+	margin: 0
+	padding: 0
+	font-size: 14px
+	font-family: "Trebuchet MS", Helvetica, sans-serif
+	color: #fff
+	background-color: black
+
+figure
+	margin: 0
+	padding: 0
+
+	img
+		max-width: 100%
+		height: auto
+
+	&.thumbnail
+		max-width: 42rem
+		padding: 4px
+
+		img
+			width: 100%
+
+		&.uploaded-image
+			max-width: 20rem
+
+pre
+	font-size: .6rem
+	color: orange
+
+nav
+	margin-top: 20px
+
+h1, h2, h3, h4, h5
+	margin-top: 0
+	font-family: Georgia
+	font-weight: normal
+	font-style: italic
+
+	small
+		display: inline-block
+
+h3
+	margin-top: 1.5rem
+	margin-bottom: 1rem
+
+a
+	color: $wutangyellow
+
+	&:hover
+		color: lighten($wutangyellow, 20%)
+
+	&:focus
+		color: inherit
+		text-decoration: inherit
+
+.action-holder
+	transition: .3s ease-in-out
+	display: block
+	position: fixed
+	background-color: $darkish
+	border: 1px solid $wutangyellow
+	box-shadow: 0px 0px 100px #000
+	border-bottom: 0
+	z-index: 10
+	bottom: 0
+	right: 0
+	left: 0
+
+	.btn
+		font-size: .8rem
+
+	.badge
+		margin-right: .25rem
+
+.save-selected-tracks
+	margin-top: .5rem
+
+	p
+		margin-top: .25rem
+		margin-bottom: 0
+		font-size: .8rem
+
+[name="selected-tracks-playlist-name"]
+	display: block
+	position: relative
+	margin-bottom: .25rem
+	font-size: .8rem
+	padding: .25rem
+	color: lighten($darkish, 50%)
+	width: 100%
+	border: 0
+	background-color: lighten($darkish, 5%)
+
+.action-holder--inactive
+	bottom: -10rem
+
+.action-holder__inner
+	padding: 1rem
+	color: #f4f4f4
+
+.badge
+	background-color: lighten($darkish, 10%)
+
+.btn-info,
+.btn-primary
+	transition: all .2s ease-in-out
+	background-color: $wutangyellow
+	color: black
+	border-radius: 0
+	border: 0
+
+	&:hover
+		background-color: darken($wutangyellow, 30%)
+		color: white
+
+	&.inactive
+		margin-top: 0
+		margin-bottom: 0
+		padding-top: 0
+		padding-bottom: 0
+		opacity: 0
+
+.btn-info
+	background-color: darken($wutangyellow, 30%)
+	color: white
+
+	&:hover
+		background-color: darken($wutangyellow, 60%)
+		color: inherit
+
+.jumbotron
+	border-radius: 0
+	margin-bottom: 0
+	background-color: $wutangyellow
+	color: black
+
+	+ .marquee-wrapper
+		margin-bottom: 3rem
+
+	a
+		color: black
+
+a
+	&[data-ajax-request]
+		overflow: hidden
+
+	&.fancy-link
+		transition: .2s ease-in-out
+		display: inline-block
+		position: relative
+		transform: perspective(0) translateZ(0)
+		top: -.05rem
+		padding: .05rem .1rem
+		background-color: rgba($wutangyellow, .10)
+
+		&:after
+			transition: all .2s ease-in-out
+			background-color: rgba($wutangyellow, 1)
+			content: ''
+			top: 100%
+			left: 0
+			right: 0
+			bottom: 0
+			z-index: -1
+			position: absolute
+
+		&:hover
+			color: black
+			text-decoration: none
+
+			&:after
+				top: 0%
+
+.tracks-overview-filter
+	margin-top: 4rem
+	display: block
+	position: relative
+	margin-left: 1rem
+	margin-right: 1rem
+
+.overview-table
+	width: 100%
+
+.row--tracks-overview
+	transition: background-color .75s ease-in-out, color .75s ease-in-out
+	cursor: pointer
+
+	input[type=checkbox]
+		pointer-events: none
+
+	&:nth-child(odd)
+		background-color: rgba(256, 256, 256, .05)
+
+.tracks-overview-filter
+	td
+		padding: .75rem .5rem
+
+	tfoot
+		background-color: $blue
+		//font-size: .8rem
+		background: -webkit-linear-gradient(45deg, #297bce 1%,#1e5799 100%)
+		border-top: 1px solid $blue
+
+		td
+			padding: .5rem .5rem
+
+.row--tracks-overview--active
+	transition: background-color .1s ease-in-out, color .1s ease-in-out
+	background-color: $blue !important
+	color: white !important
+
+.row--header
+	font-weight: 600
+	border-bottom: 1px solid $wutangyellow
+	text-transform: uppercase
+
+	th
+		cursor: pointer
+
+		&:hover
+			color: $wutangyellow
+
+.message-holder
+	transition: all .2s
+	transition-delay: .3s
+	background-color: $darkish
+	color: $wutangyellow
+	opacity: 0
+	padding: 0 .5rem
+	border: 0px solid $blue
+	max-height: 0rem
+
+	p:last-of-type
+		margin: 0
+
+.message-holder--active
+	padding: .5rem .5rem
+	border: 1px solid $blue
+	max-height: 4rem
+	opacity: 1
+
+.marquee-wrapper
+	position: relative
+	pointer-events: none
+	user-select: none
+
+	.marquee-header
+		padding: 4px 8px 4px 4px
+		display: inline-block
+		position: absolute
+		left: 0
+		top: 0
+		bottom: 0
+		border: 0
+		width: auto
+		font-size: .7rem
+		font-weight: bold
+		text-transform: uppercase
+		color: $wutangyellow
+		background-color: $darkish
+
+	marquee
+		background-color: $darkish
+		padding-left: 166px
+		display: block
+		position: relative
+
+		span
+			display: inline-block
+			padding: 4px 16px 4px 0
+			text-transform: uppercase
+			font-size: .7rem
+			color: #e8e8e8
+
+ul.items-listing
+	list-style: none
+	padding: 0
+	margin: 0
+
+	li
+		position: relative
+		cursor: default
+		background-color: $darkish
+		margin-bottom: 1px
+
+		span
+			display: block
+			position: relative
+			padding: 6px
+			border: 1px solid $darkish
+			border: 0
+
+		a
+			padding: 6px
+			background-color: $darkish
+			border: 1px solid lighten($darkish, 10%)
+			display: block
+
+			&:hover
+				text-decoration: none
+
+.tabs
+	.nav-item
+		border: 1px solid transparent
+		border-bottom: 0
+
+		&.active
+			border: 1px solid $wutangyellow
+			border-bottom: 0
+			background-color: $wutangyellow
+			border-radius: 0
+
+			a
+				color: #fff
+
+			.nav-link
+				border: 0
+
+		.nav-link
+			border: 0
+
+	.tab-pane.active
+		opacity: 1
+
+.nav-tabs
+	border-bottom-color: $wutangyellow
+
+	li
+		a
+			small
+				display: block
+				clear: both
+				font-size: 70%
+				text-transform: uppercase
+
+.tab-pane
+	padding: 10px 15px
+	border: 1px solid $wutangyellow
+	border-top: 0
+
+	.items-listing
+		li
+			padding: 3px 6px
+
+.card
+	margin-bottom: 30px
+	background-color: #0f0f0f
+
+	.gernres-wrapper
+		margin-top: 15px
+
+	.btn
+		margin-top: 15px
+
+.bg-info
+	font-size: 120%
+	color: #337ab7
+
+h5.bg-info
+	padding: 16px
+	line-height: 150%
+
+#top-tracks
+	ul
+		li
+			position: relative
+
+			.col-xs-6:first-of-type
+				text-align: right
+
+			.seperator
+				display: block
+				position: absolute
+				width: 30px
+				height: 100%
+				top: -7px
+				right: -15px
+				text-align: center
+
+footer
+	background-color: #0f0f0f
+	color: #f4f4f4
+	border-top: 1px solid rgba(#999, .3)
+	margin-top: 40px
+	padding: 20px 0
+	text-align: center
+	font-size: 10px
+	text-transform: uppercase
+	font-weight: normal
+
+	a
+		color: #2ebd59
+		font-weight: bold
+		text-shadow: 1px 1px #2ebd59
+
+		&:hover
+			color: #ff6437
+			text-decoration: none
+
+mark
+	background-color: rgba(256, 256, 256, .2)
+	color: $wutangyellow
+
+.video-container
+	position: relative
+	padding-bottom: 56.25%
+	height: 0
+	overflow: hidden
+
+	iframe
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+
+audio
+	display: block
+	position: relative
+	width: 100%
+
+article
+	p
+		font-size: 110%
+		margin: 0 0 22px 0
+		line-height: 160%
+
+	.intro-holder
+		padding: 15px
+		font-size: 110%
+		background-color: #f4f4f4
+		color: #333
+
+		p:last-of-type
+			margin-bottom: 0
+
+	.figure
+		position: relative
+		max-width: 30%
+		float: right
+		margin: 15px -30px 15px 15px
+
+	section.content-holder
+		position: relative
+		padding: 60px
+		background-color: #fff
+
+		&.content-holder-part-1
+			margin-top: -180px
+
+		figure
+			margin-bottom: 30px
+			margin-top: 15px
+
+			&.custom-thumbnail
+				float: right
+				max-width: 40%
+				margin: 0 0 20px 20px
+
+	h1
+		position: relative
+		display: inline-block
+		color: black
+		font-size: 400%
+
+		&::after
+			content: ''
+			display: block
+			position: absolute
+			height: 30%
+			bottom: 35%
+			left: -5%
+			width: 110%
+			background: yellow
+			z-index: -1
+
+	blockquote
+		position: relative
+		padding: 0
+		margin: 0
+		border: 0
+
+		small
+			margin: 8px 0 0 0
+
+		p
+			margin: 0 0 4px 0
+			position: relative
+
+			> span
+				position: relative
+				display: inline-block
+				padding: 4px 8px
+				color: #000
+				background-color: pink
+				cursor: pointer
+
+				&:hover
+					background-color: yellow
+					z-index: 6000
+
+					dfn
+						pointer-events: initial
+						opacity: 1
+						transform: scale(1)
+						//margin-left: 0
+
+		dfn
+			pointer-events: none
+			display: block
+			position: absolute
+			left: 100%
+			top: 0
+			font-size: 80%
+			text-transform: none
+			width: 360px
+			height: auto
+			background-color: yellow
+			padding: 12px 24px
+			line-height: 150%
+			opacity: 0
+
+			.footer
+				display: block
+				clear: both
+				font-size: 75%
+				text-transform: uppercase
+				margin-top: 8px
+				padding-top: 8px
+				border-top: 1px solid black
+
+	&#DOOM
+		blockquote
+			margin: 30px 0 30px -60px
+
+	&#DOOM2
+		blockquote
+			dfn
+				top: 100%
+				left: 0
+				width: 100%
+
+			p
+				> span
+					&:hover
+						dfn
+							background-color: #ffff74
+
+.hero
+	position: relative
+	margin-bottom: 30px
+	margin-top: 30px
+
+	blockquote
+		display: block
+		width: 100%
+		position: absolute
+		bottom: 180px
+		padding: 0
+		margin: 0
+		border: 0
+
+		p
+			max-width: 77%
+			font-family: Arial Black
+			font-weight: 100
+			color: #fff
+			text-shadow: 0px 0px 30px #000
+			text-transform: uppercase
+			line-height: 100%
+			font-size: 220%
+
+.list-group-item
+	background-color: #0f0f0f
+
+
+@media(min-width: 768px)
+	body
+		font-size: 15px
+
+	.action-holder
+		left: auto
+		right: 3rem
+		min-width: 420px
+		max-width: 30%
+
+@media(min-width: 992px)
+	body
+		font-size: 15px
+
+@media(min-width: 1200px)
+	body
+		font-size: 15px
+			
+	.row--tracks-overview
+		&:hover
+			transition: background-color .1s ease-in-out, color .1s ease-in-out
+			background-color: $wutangyellow
+			color: black
+
+	.selected-tracks
+		.badge
+			transition: .15s ease-in-out
+			cursor: pointer
+
+			&:hover
+				background-color: darken($darkish, 12.5%)
+				text-decoration: line-through
